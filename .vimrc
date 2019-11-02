@@ -81,7 +81,7 @@ set encoding=utf-8
 let g:UltiSnipsExpandTrigger="<F3>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetDirectories = ['/home/alhiris/comp/UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['/home/alhiris/code/UltiSnips']
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -224,7 +224,8 @@ endfunction
 nnoremap <F5> :!ctags -R<CR>
 
 " Trying to automate my c++ program execute
-nnoremap <F9> :vert terminal ++open ++cols=40 sudo g++ -o codepower codeforces.cpp && clear && ./codepower<CR>
+" No idea
+" nnoremap <F9> :vert terminal ++open ++cols=40 (sudo g++ -o ~\/code\/power ~\/code\/codeforces.cpp | clear | ~\/code\/power) <CR>
 
 " Mappings for moving around fast between splits
 nnoremap <c-j> <c-w>j
