@@ -23,8 +23,20 @@ Plugin 'tpope/vim-abolish'
 " Plugin for surrounding the selection
 Plugin 'tpope/vim-surround'
 
+" Plugin for comments still from tpope <3
+Plugin 'tpope/vim-commentary'
+
+" Plugin for intricate html structures
+Plugin 'mattn/emmet-vim'
+
 " Plugin for out lovely website codeforces
 Plugin 'Igorjan94/codeforces.vim'
+
+" Plugin for identline cute af
+Plugin 'Yggdroot/indentLine'
+
+" Plugin for javascript or and java thing?
+Plugin 'pangloss/vim-javascript'
 
 " Some basic defaults 'everyone agrees on'?? Sure thing
 Plugin 'tpope/vim-sensible'
@@ -143,6 +155,8 @@ set nowrap
 
 " YCM thing
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+"let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 " For working without std:: prefix
 let g:ycm_auto_trigger=1
 let g:ycm_semantic_triggers = {

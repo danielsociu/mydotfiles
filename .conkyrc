@@ -115,12 +115,12 @@ ${color slate grey}HOME:  ${color }${fs_free /home}/${fs_size /home}
 ${fs_bar 3,140 /home}
 
 ${color slate grey}Internet:
-${voffset 6}${color}${font PizzaDude Bullets:size=12}S${font}  Tot.dow. ${totaldown wlp3s0}   
-${voffset 1}${color}${font PizzaDude Bullets:size=12}r${font}  Down: ${color }${downspeed wlp3s0}/s
-${downspeedgraph wlp3s0 20,140 000000 ffffff}
-${color}${font PizzaDude Bullets:size=12}M${font}  Tot.up. ${totalup wlp3s0}
-${voffset 1}${color}${font PizzaDude Bullets:size=12}v${font}  Up: ${color }${upspeed wlp3s0}/s
-${upspeedgraph wlp3s0 20,140 000000 ffffff}
+${voffset 6}${color}${font PizzaDude Bullets:size=12}S${font}  Tot.dow. ${totaldown wlp2s0}   
+${voffset 1}${color}${font PizzaDude Bullets:size=12}r${font}  Down: ${color }${downspeed wlp2s0}/s
+${downspeedgraph wlp2s0 20,140 000000 ffffff}
+${color}${font PizzaDude Bullets:size=12}M${font}  Tot.up. ${totalup wlp2s0}
+${voffset 1}${color}${font PizzaDude Bullets:size=12}v${font}  Up: ${color }${upspeed wlp2s0}/s
+${upspeedgraph wlp2s0 20,140 000000 ffffff}
 #${voffset -14}${color}${font Martin Vogel's Symbols:size=16}B${font}${color slate grey}Mail:
 #${color }You have ${color3}${texeci 60 perl ~/scripts/gmail.pl n} ${color}new mail(s)
 #${color slate grey}Weather:
