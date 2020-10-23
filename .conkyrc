@@ -1,86 +1,90 @@
-# UBUNTU-CONKY
-# A comprehensive conky script, configured for use on
-# Ubuntu / Debian Gnome, without the need for any external scripts.
-#
-# Based on conky-jc and the default .conkyrc.
-# INCLUDES:
-# - tail of /var/log/messages 
-# - netstat connections to your computer
-#
-# -- Pengo (conky@pengo.us)
-#
+conky.config = {
+-- UBUNTU-CONKY
+-- A comprehensive conky script, configured for use on
+-- Ubuntu / Debian Gnome, without the need for any external scripts.
 
-# Create own window instead of using desktop (required in nautilus)
-own_window yes
-background no
-#own_window_hints='below'
+-- Based on conky-jc and the default .conkyrc.
+-- INCLUDES:
+-- - tail of /var/log/messages 
+-- - netstat connections to your computer
 
-#Always on top
-own_window_hints undecorated,above,skip_taskbar
-own_window_colour black
-own_window_transparent yes
-own_window_argb_visual yes #sets the bg as transparent no matter what(not only on desktop)
-own_window_class override
+-- -- Pengo (conky@pengo.us)
 
-# Use double buffering (reduces flicker, may not work for everyone)
-double_buffer yes
 
-# fiddle with window
-use_spacer yes
-use_xft yes
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	background = false,
+--own_window_hints='below'
 
-# Update interval in seconds
-update_interval 3.0
+--Always on top
+--	own_window_hints = 'undecorated,above,skip_taskbar',
+    own_window_hints = 'undecorated,skip_taskbar',
+--	own_window_colour = 'black',
+	own_window_transparent = true,
+	own_window_argb_visual = true,--sets the bg as transparent no matter what(not only on desktop)
+--	own_window_class = 'override',
 
-# Minimum size of text area
-minimum_size 10 5
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
 
-# Draw shades?
-draw_shades no
+-- fiddle with window
+	use_spacer = 'yes',
+	use_xft = true,
 
-# Text stuff
-draw_outline no # amplifies text if yes
-draw_borders no
+-- Update interval in seconds
+	update_interval = 3.0,
 
-uppercase no # set to yes if you want all text to be in uppercase
+-- Minimum size of text area
+	minimum_width = 10, minimum_height = 5,
 
-# Stippled borders?
-stippled_borders 1
+-- Draw shades?
+	draw_shades = false,
 
-# border margins
-border_margin 1
+-- Text stuff
+	draw_outline = false,-- amplifies text if yes
+	draw_borders = false,
 
-# border width
-border_width 1
+	uppercase = false,-- set to yes if you want all text to be in uppercase
 
-# Default colors and also border colors, grey90 == #e5e5e5
-default_color white
-default_shade_color black
-default_outline_color grey90
+-- Stippled borders?
+	stippled_borders = 1,
 
-# Text alignment, other possible values are commented
-#alignment top_left
-alignment top_right
-#alignment bottom_left
-#alignment bottom_right
+-- border margins
+	border_margin = '1',
 
-# Gap between borders of screen and text
-gap_x -230
-gap_y 10
+-- border width
+	border_width = 1,
 
-# stuff after 'TEXT' will be formatted on screen
+-- Default colors and also border colors, grey90 == #e5e5e5
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'grey90',
 
-override_utf8_locale yes
-xftfont Terminus:size=8
-xftalpha 0.8
+-- Text alignment, other possible values are commented
+--alignment top_left
+	alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
 
-# Coisas para rever mais tarde
+-- Gap between borders of screen and text
+	gap_x = -230,
+	gap_y = 10,
 
-#${offset 240}${color}${font weather:size=26}y ${font}FSB ${i2c temp 1} °C
-#${offset 240}${color slate grey}Temperature:
-#${offset 240}${color}${font weather:size=26}z ${font}CPU ${i2c temp 2} °C
+-- stuff after 'TEXT' will be formatted on screen
 
-TEXT
+	override_utf8_locale = true,
+	font = 'Terminus:size=8',
+	xftalpha = 0.8,
+
+-- Coisas para rever mais tarde
+
+--${offset 240}${color}${font weather:size=26}y ${font}FSB ${i2c temp 1} °C
+--${offset 240}${color slate grey}Temperature:
+--${offset 240}${color}${font weather:size=26}z ${font}CPU ${i2c temp 2} °C
+
+};
+
+conky.text = [[
 ${color slate grey}${time %a, } ${color }${time %e %B %G}
 ${color slate grey}${time %Z,    }${color }${time %H:%M:%S}
 
@@ -128,3 +132,4 @@ ${upspeedgraph wlp2s0 20,140 000000 ffffff}
 #${color}${font weather:size=47}${execi 3600 perl ~/scripts/weather.pl POXX0035 c 3dp}${font}
 #${color}${execi 3600 perl ~/scripts/weather.pl POXX0035 c 3t}
 ${voffset 5}${color}${font Sonora:size=17}&${font}${color slate grey} MusicPlayer:
+]];

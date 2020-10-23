@@ -60,6 +60,9 @@ Plugin 'honza/vim-snippets'
 " Plugin for tmux-keybinds 
 Plugin 'christoomey/vim-tmux-navigator'
 
+" Plugin for Haskell indentatino
+Plugin 'neovimhaskell/haskell-vim'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
