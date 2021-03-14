@@ -244,6 +244,9 @@ nnoremap <F5> :!ctags -R<CR>
 " No idea
 " nnoremap <F9> :vert terminal ++open ++cols=40 (sudo g++ -o ~\/code\/power ~\/code\/codeforces.cpp | clear | ~\/code\/power) <CR>
 
+" Binding for copying easy in visual mode
+vnoremap <c-c> "+y
+
 " Mappings for moving around fast between splits
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
