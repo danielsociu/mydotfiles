@@ -4,8 +4,11 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 
-"COLORS scheeeemeeeeesss
-"Plugin 'tyrannicaltoucan/vim-deep-space'
+" LaTex vim
+Plugin 'vim-latex/vim-latex'
+
+" COLORS scheeeemeeeeesss
+" Plugin 'tyrannicaltoucan/vim-deep-space'
 Plugin 'rakr/vim-two-firewatch'
 
 " Some interesting unused keybinds but later on since i suck atm
@@ -101,6 +104,15 @@ let g:UltiSnipsSnippetDirectories = ['/home/alhiris/code/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " EndUltisnips
+
+" TEX STUFFS
+" tex_conceal & conceallevel for no ugly formulas
+" and the rest for no pre-folding
+let g:tex_conceal=""
+let conceallevel=0
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""
 
 "Disabling wrapping and continuing on enter or on o/O normal mode
 "See help fo-table for more info on letters
