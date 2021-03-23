@@ -17,7 +17,10 @@ Plugin 'tpope/vim-unimpaired'
 " Plugin tpope/vim-rails
 
 " RAAAANNNGEEERR POGGERS
-Plugin 'francoiscabrol/ranger.vim'
+" Plugin 'francoiscabrol/ranger.vim'
+
+" Just nerdtree the boomer ass boomer
+Plugin 'preservim/nerdtree'
 
 " Plugin for selecting the search i/ (represents the selection)
 " Plugin 'kana/vim-textobj-user' "just unused
@@ -259,6 +262,8 @@ nnoremap <F5> :!ctags -R<CR>
 " Trying to automate my c++ program execute
 " No idea
 " nnoremap <F9> :vert terminal ++open ++cols=40 (sudo g++ -o ~\/code\/power ~\/code\/codeforces.cpp | clear | ~\/code\/power) <CR>
+map <F6> :<C-U>!g++ -O2 -DLOCAL -std=c++11 -Wall -Wextra -Wno-unused-result -static %:r.cpp -o %:r<CR>
+map <F9> :<C-U>!./%:r<CR>
 
 " Binding for copying easy in visual mode
 vnoremap <c-c> "+y
@@ -278,3 +283,14 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" BakaTree keybinds the recommended ones
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Finally done with that terminal hard switching
+tnoremap <C-s> <C-w>:bn<CR>
+tnoremap <C-q> <C-w>:bp<CR>
+
