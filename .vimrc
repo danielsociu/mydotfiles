@@ -11,32 +11,29 @@ Plugin 'vim-latex/vim-latex'
 " Plugin 'tyrannicaltoucan/vim-deep-space'
 Plugin 'rakr/vim-two-firewatch'
 
-" Some interesting unused keybinds but later on since i suck atm
+" cnext bnext etc and stuffs like ]e [e (move line x above/down)
 Plugin 'tpope/vim-unimpaired'
-" Some path project adder, for the find and specific find commands
+
 " Plugin tpope/vim-rails
 
 " RAAAANNNGEEERR POGGERS
 Plugin 'francoiscabrol/ranger.vim'
 
-"Plugin for selecting the search i/ (represents the selection)
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-lastpat'
+" Plugin for selecting the search i/ (represents the selection)
+" Plugin 'kana/vim-textobj-user' "just unused
 
-" Plugin super substitute /S great thing for swapping 2 words :%S/{wordA,wordB}/{wordB,wordA}/g
+" Plugin super substitute /S great thing for swapping 2 words :%S/{wordA,wordB}/common{wordB,wordA}/g basiicaly a better version of s
 Plugin 'tpope/vim-abolish'
 
-" Plugin for surrounding the selection
+" Plugin for surrounding the selection poggers cs, ds ys
 Plugin 'tpope/vim-surround'
 
 " Plugin for comments still from tpope <3
+" gc for comments
 Plugin 'tpope/vim-commentary'
 
 " Plugin for intricate html structures
-Plugin 'mattn/emmet-vim'
-
-" Plugin for out lovely website codeforces
-Plugin 'Igorjan94/codeforces.vim'
+" Plugin 'mattn/emmet-vim' " not using
 
 " Plugin for identline cute af
 Plugin 'Yggdroot/indentLine'
@@ -52,8 +49,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin for Git managing, so later on
 Plugin 'tpope/vim-fugitive'
 
+" Technical things for brackets (coming in pairs basically lol)
 Plugin 'jiangmiao/auto-pairs'
 
+" Just the grandma package
 Plugin 'Valloric/YouCompleteMe'
 
 " Ultisnips plugin xD
@@ -61,13 +60,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 
 " Plugin for tmux-keybinds 
 Plugin 'christoomey/vim-tmux-navigator'
 
 " Plugin for Haskell indentatino
-Plugin 'neovimhaskell/haskell-vim'
+" KEKW
+" Plugin 'neovimhaskell/haskell-vim'
 
 
 call vundle#end()            " required
