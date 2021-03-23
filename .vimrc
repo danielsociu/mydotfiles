@@ -16,6 +16,9 @@ Plugin 'tpope/vim-unimpaired'
 " Some path project adder, for the find and specific find commands
 " Plugin tpope/vim-rails
 
+" RAAAANNNGEEERR POGGERS
+Plugin 'francoiscabrol/ranger.vim'
+
 "Plugin for selecting the search i/ (represents the selection)
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-lastpat'
@@ -105,7 +108,7 @@ let g:UltiSnipsSnippetDirectories = ['/home/alhiris/code/UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
 " EndUltisnips
 
-" TEX STUFFS
+" LATEX STUFFS
 " tex_conceal & conceallevel for no ugly formulas
 " and the rest for no pre-folding
 let g:tex_conceal=""
@@ -113,6 +116,7 @@ let conceallevel=0
 let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
+let g:Tex_DefaultTargetFormat='pdf'
 
 "Disabling wrapping and continuing on enter or on o/O normal mode
 "See help fo-table for more info on letters
