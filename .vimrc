@@ -4,8 +4,12 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 
+" jupyter-vim Pog
+Plugin 'jupyter-vim/jupyter-vim'
+
 " LaTex vim
-Plugin 'vim-latex/vim-latex'
+" Use only when writing latex fiels
+" Plugin 'vim-latex/vim-latex'
 
 " COLORS scheeeemeeeeesss
 " Plugin 'tyrannicaltoucan/vim-deep-space'
@@ -21,6 +25,9 @@ Plugin 'tpope/vim-unimpaired'
 
 " Just nerdtree the boomer ass boomer
 Plugin 'preservim/nerdtree'
+
+" Kotlin plugin
+Plugin 'udalov/kotlin-vim'
 
 " Plugin for selecting the search i/ (represents the selection)
 " Plugin 'kana/vim-textobj-user' "just unused
@@ -70,8 +77,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " Plugin for Haskell indentatino
 " KEKW
-" Plugin 'neovimhaskell/haskell-vim'
+Plugin 'neovimhaskell/haskell-vim'
 
+" Plugin for buffers
+Plugin 'qpkorr/vim-bufkill'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
