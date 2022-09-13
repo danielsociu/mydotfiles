@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+" filetype off                  " required
+filetype plugin on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
@@ -9,7 +10,7 @@ Plugin 'jupyter-vim/jupyter-vim'
 
 " LaTex vim
 " Use only when writing latex fiels
-" Plugin 'vim-latex/vim-latex'
+Plugin 'vim-latex/vim-latex'
 
 " COLORS scheeeemeeeeesss
 " Plugin 'tyrannicaltoucan/vim-deep-space'
@@ -20,6 +21,12 @@ Plugin 'tpope/vim-unimpaired'
 
 " Plugin tpope/vim-rails
 
+" Plugin for arduino uno
+Plugin 'stevearc/vim-arduino'
+
+" Ctrl P from VSC
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " RAAAANNNGEEERR POGGERS
 " Plugin 'francoiscabrol/ranger.vim'
 
@@ -28,6 +35,18 @@ Plugin 'preservim/nerdtree'
 
 " Kotlin plugin
 Plugin 'udalov/kotlin-vim'
+
+" Github addition plugin
+Plugin 'airblade/vim-gitgutter'
+
+" Plugin for general information like line, errors, etc
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Prettier.io formatting
+Plugin 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Plugin for selecting the search i/ (represents the selection)
 " Plugin 'kana/vim-textobj-user' "just unused
@@ -50,6 +69,12 @@ Plugin 'Yggdroot/indentLine'
 
 " Plugin for javascript or and java thing?
 Plugin 'pangloss/vim-javascript'
+
+" Plugin for typescript
+Plugin 'leafgarland/typescript-vim'
+
+" Plugin for React
+Plugin 'maxmellon/vim-jsx-pretty'
 
 " Some basic defaults 'everyone agrees on'?? Sure thing
 Plugin 'tpope/vim-sensible'
@@ -77,10 +102,15 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " Plugin for Haskell indentatino
 " KEKW
-Plugin 'neovimhaskell/haskell-vim'
+" Plugin 'neovimhaskell/haskell-vim'
 
 " Plugin for buffers
 Plugin 'qpkorr/vim-bufkill'
+
+" For colorschemes
+Plugin 'rodnaph/vim-color-schemes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -108,6 +138,7 @@ set cindent
 "set mouse=a
 set cursorline
 set encoding=utf-8
+let g:airline_powerline_fonts = 1
 
 "Ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -120,10 +151,38 @@ let g:UltiSnipsSnippetDirectories = ['/home/alhiris/code/UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
 " EndUltisnips
 
+" Arduino settings
+let g:arduino_cmd = '/usr/share/arduino/arduino'
+let g:arduino_dir = '/usr/share/arduino'
+let g:arduino_serial_baud = 9600
+let g:arduino_serial_port = "/dev/ttyACM0"
+"let g:arduino_serial_cmd = 'screen /dev/ttyACM0 9600'
+let g:arduino_serial_cmd = 'screen {port} {baud}'
+let g:arduino_serial_cmd = 'picocom {port} -b {baud} -l'
+nnoremap <buffer> <leader>am :ArduinoVerify<CR>
+nnoremap <buffer> <leader>au :ArduinoUpload<CR>
+nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
+nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
+nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
+
+" function! ArduinoStatusLine()
+"   let port = arduino#GetPort()
+"   let line = '[' . g:arduino_board . '] [' . g:arduino_programmer . ']'
+"   if !empty(port)
+"     let line = line . ' (' . port . ':' . g:arduino_serial_baud . ')'
+"   endif
+"   return line
+" endfunction
+" augroup ArduinoStatusLine
+"   autocmd! * <buffer>
+"   autocmd BufWinEnter <buffer> setlocal stl=%f\ %h%w%m%r\ %{ArduinoStatusLine()}\ %=\ %(%l,%c%V\ %=\ %P%)
+" augroup END
+
 " LATEX STUFFS
 " tex_conceal & conceallevel for no ugly formulas
 " and the rest for no pre-folding
 let g:tex_conceal=""
+let g:tex_flavor='latex'
 let conceallevel=0
 let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
@@ -146,7 +205,12 @@ let g:Tex_DefaultTargetFormat='pdf'
 "colorscheme deep-space
 
 "veryyy olld colorscheme like a boss, cute blue and red xD
+" colorscheme koehler
+" set background=dark
+" colorscheme solarized
 colorscheme koehler
+" colorscheme gruvbox
+" hi Normal guibg=NONE ctermbg=NONE
 
 "COLORSCHEMEEEESSS***********************************************************************************
 set formatoptions-=cro 
@@ -303,3 +367,21 @@ nnoremap <C-f> :NERDTreeFind<CR>
 tnoremap <C-s> <C-w>:bn<CR>
 tnoremap <C-q> <C-w>:bp<CR>
 
+" termguicolors fix
+" if has("termguicolors")     " set true colors
+"     set t_8f=[38;2;%lu;%lu;%lum
+"     set t_8b=[48;2;%lu;%lu;%lum
+"     set termguicolors
+" endif
+" if has("termguicolors") && has("nvim") " set true colors on NeoVim
+"     set t_8f=�[38;2;%lu;%lu;%lum
+"     set t_8b=�[48;2;%lu;%lu;%lum
+"     set termguicolors
+" endif
+" set background=dark
+" " colors deep-space
+" hi! link Conceal Normal
+" if !has('gui_running')
+"     hi! Normal ctermbg=NONE guibg=NONE
+"     hi! NonText ctermbg=NONE guibg=NONE
+" endif

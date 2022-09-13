@@ -60,7 +60,7 @@ conky.config = {
     -- stuff after 'TEXT' will be formatted on screen
 
     override_utf8_locale = true,
-    font = 'Terminus:size=8',
+    font = 'Terminus:size=9',
     xftalpha = 0.8,
 
     --${offset 240}${color}${font weather:size=26}y ${font}FSB ${i2c temp 1} °C
@@ -70,14 +70,17 @@ conky.config = {
 };
 
 conky.text = [[
-    ${color slate grey}${time %a, } ${color }${time %e %B %G}
-    ${color slate grey}${time %Z,    }${color }${time %H:%M:%S}
+    ${color slate grey}${time %a, }${color }${time %e %B %G}
+    ${color slate grey}${time %Z, }${color }${time %H:%M:%S}
 
     ${voffset 6}${color}${font OpenLogos:size=20} Alhiris
 
-    ${voffset -20}${color}${font StyleBats:size=12}O ${font}${color slate grey}UpTime: ${color }$uptime
-    ${color}${font StyleBats:size=12}Q ${font}${color slate grey}Kern:${color }$kernel
-    ${color}${font StyleBats:size=12}A ${font}${color slate grey}CPU:${color } $cpu% ${acpitemp}C
+    ${voffset -20}${offset -12}${color}${font StyleBats:size=12}  U ${font}${color slate grey}UpTime: ${color }$uptime
+    ${color}${font StyleBats:size=12}K ${font}${color slate grey}Kern:${color }$kernel
+    ${color}${font StyleBats:size=12}C ${font}${color slate grey}CPU:${color } $cpu% ${acpitemp}C ${freq}MHz
+    ${color}${font StyleBats:size=12}G ${font}${color slate grey}GPU:${color } ${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}C ${exec nvidia-smi | grep % | cut -c 37-40}MB/${exec nvidia-smi | grep % | cut -c 48-51}MB
+#    ${color slate grey}Power : ${font StyleBats:size=8} ${color} ${exec nvidia-smi | grep % | cut -c 21-23} W${font}
+#    ${exec nvidia-smi | grep % | cut -c 62-63}% 
     ${cpugraph 20,140 000000 ffffff}
     ${color slate grey}Load: ${color }$loadavg
     ${color slate grey}Processes: ${color }$processes  
@@ -104,17 +107,35 @@ conky.text = [[
     ${fs_bar 3,140 /home}
 
     ${color slate grey}Internet:
-    ${voffset 6}${color}${font PizzaDude Bullets:size=12}S${font}  Tot.dow. ${totaldown wlp2s0}   
-    ${voffset 1}${color}${font PizzaDude Bullets:size=12}r${font}  Down: ${color }${downspeed wlp2s0}/s
-    ${downspeedgraph wlp2s0 20,140 000000 ffffff}
-    ${color}${font PizzaDude Bullets:size=12}M${font}  Tot.up. ${totalup wlp2s0}
-    ${voffset 1}${color}${font PizzaDude Bullets:size=12}v${font}  Up: ${color }${upspeed wlp2s0}/s
-    ${upspeedgraph wlp2s0 20,140 000000 ffffff}
+    ${voffset 6}${color}${font PizzaDude Bullets:size=12}S${font} T.dow: ${totaldown wlp3s0}   
+    ${voffset 1}${color}${font PizzaDude Bullets:size=12}r${font}  Down: ${color}${downspeed wlp3s0}/s
+    ${downspeedgraph wlp3s0 20,140 000000 ffffff}
+    ${color}${font PizzaDude Bullets:size=12}M${font} T.up: ${totalup wlp3s0}
+    ${voffset 1}${color}${font PizzaDude Bullets:size=12}v${font}  Up:   ${color }${upspeed wlp3s0}/s
+    ${upspeedgraph wlp3s0 20,140 000000 ffffff}
+# ${hr}
+# ${color slate grey}IP WLAN${color orange}: ${font Hack:bold:size=8}${color grey}${addr wlp3s0}${font}
+    ${color slate grey}Essid : ${font StyleBats:size=8}${color}${wireless_essid wlp3s0}${font}
+    ${color slate grey}Signal: ${font StyleBats:size=8}${color}${wireless_link_bar 3,66 wlp3s0}${font}
+#${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-
+    ${color slate grey}IP LAN: ${font StyleBats:size=8}${color}${addr wlp3s0}${font}
+#    ${color}${font StyleBats:size=12}G ${font}${color slate grey}GPU:${color}
+#    ${color slate grey}Temp  : ${font StyleBats:size=8} ${color}  ${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp -t} °C${font}
+#    ${color slate grey}Util  : ${font StyleBats:size=8} ${color} ${exec nvidia-smi | grep % | cut -c 61-63} %${font}
+#    ${color slate grey}VRAM  : ${font StyleBats:size=8} ${color}${exec nvidia-smi | grep % | cut -c 37-40} MB${font}
+#    ${color slate grey}Power : ${font StyleBats:size=8} ${color} ${exec nvidia-smi | grep % | cut -c 21-23} W${font}
+
+# ${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-
+# ${color slate grey}IP BR0 ${color orange}: ${font Hack:bold:size=8}${color grey}${addr br0}${font}
+# ${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-
+# ${color slate grey}IP LXC ${color orange}: ${font Hack:bold:size=8}${color grey}${addr lxcbr0}${font}
+# ${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-${color slate grey}-${color grey}-${color slate grey}-
+# ${color slate grey}IP VPN ${color orange}: ${font Hack:bold:size=8}${color grey}${addr proton0}${font}
 #${voffset -14}${color}${font Martin Vogel's Symbols:size=16}B${font}${color slate grey}Mail:
 #${color }You have ${color3}${texeci 60 perl ~/scripts/gmail.pl n} ${color}new mail(s)
 #${color slate grey}Weather:
 #${color}${execi 3600 perl ~/scripts/weather.pl POXX0035 c 3d}
 #${color}${font weather:size=47}${execi 3600 perl ~/scripts/weather.pl POXX0035 c 3dp}${font}
-#${color}${execi 3600 perl ~/scripts/weather.pl POXX0035 c 3t}
-    ${voffset 5}${color}${font Sonora:size=17}&${font}${color slate grey} MusicPlayer:
+#${color}${execi 3600 perl ~/scripts/weather.pl POXX0035 c 3t}}
+#${voffset 5}${color}${font Sonora:size=8}&${font}${color slate grey} MusicPlayer: ${moc_song}
 ]];
